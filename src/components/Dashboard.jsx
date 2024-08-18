@@ -18,15 +18,17 @@ function Dashboard({ selectedPokemon }) {
   return (
     <DashboardContainer>
       <Title>나만의 포켓몬</Title>
-      {/* {selectedPokemon.length === 0 ? (
-        <p>선택된 포켓몬이 없습니다.</p>
-      ) : (
-        <ul>
-          {selectedPokemon.map((pokemon) => (
-            <li key={pokemon.id}>{pokemon.korean_name}</li>
-          ))}
-        </ul>
-      )} */}
+      <div>
+        {selectedPokemon.length === 0 ? (
+          <p>선택된 포켓몬이 없습니다.</p>
+        ) : (
+          <ul>
+            {selectedPokemon.map((pokemon) => (
+              <li key={pokemon.id}>{pokemon.korean_name}</li>
+            ))}
+          </ul>
+        )}
+      </div>
     </DashboardContainer>
   );
 }
