@@ -16,14 +16,14 @@ function Dex() {
       /* 포켓몬을 선택하는 로직을 완성해봅시다 */
       //선택한 카드의 갯수가 6개가 넘었는지 확인해서 넘었으면 막고, 아니면 return
       if (selectedPokemon.length >= 6) {
-        alert("최대6개만 추가할 수 있음");
+        return alert("최대6개만 추가할 수 있음");
       }
 
       //이미 추가했는지 확인해야함
-      if (pokemon.id === selectedPokemon.id) {
+      if (selectedPokemon.some((p) => p.id === pokemon.id)) {
         return;
       } else {
-        setSelectedPokemon([...selectedPokemon], pokemon);
+        setSelectedPokemon([...selectedPokemon, pokemon]);
       }
     }
   };

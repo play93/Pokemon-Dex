@@ -4,19 +4,39 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MOCK_DATA from "../mock";
 
+const PokemonInfoBox = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+`;
+
+const GoBackButton = styled.button`
+  cursor: pointer;
+  padding: 5px 10px;
+`;
+
 function pokemonDetail() {
-  const location = useLocation;
-  const navigate = useNavigate;
-  const pokemon = MOCK_DATA.some((p) => p.id === MOCK_DATA.id);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = new URLSearchParams(location.search);
+  console.log(params); //params 확인
+  const pokemonId = Number(params.get("id"));
+  console.log(pokemonId); //params에서 가져온 id확인
+  const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
+  console.log(pokemon);
 
   return (
-    <div>
+    <PokemonInfoBox>
       <img src={pokemon.img_url} alt={pokemon.korean_name} />
       <h3>{pokemon.korean_name}</h3>
       <p>타입: {pokemon.types}</p>
       <p>{pokemon.description}</p>
-      <button onClick={() => navigate("/dex/")}>뒤로가기</button>
-    </div>
+      <GoBackButton onClick={() => navigate("/dex")}>뒤로가기</GoBackButton>
+    </PokemonInfoBox>
   );
 }
 

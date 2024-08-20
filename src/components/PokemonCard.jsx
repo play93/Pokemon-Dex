@@ -20,11 +20,17 @@ const PokemonNum = styled.p`
 `;
 
 const Button = styled.button`
-  background-color: green;
+  background-color: ${(props) => (props.$isAdd ? "green" : "red")};
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  &:hover {
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected, navigate }) => {
@@ -45,16 +51,20 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected, navigate }) => {
 
       {isSelected ? (
         <Button
+          $isAdd={false}
           onClick={(e) => {
-            e.stopPropagation().onRemove(pokemon);
+            e.stopPropagation();
+            onRemove(pokemon);
           }}
         >
           삭제
         </Button> //onRemove인 경우 삭제로
       ) : (
         <Button
+          $isAdd={true}
           onClick={(e) => {
-            e.stopPropagation().onAdd(pokemon);
+            e.stopPropagation();
+            onAdd(pokemon);
           }}
         >
           추가
