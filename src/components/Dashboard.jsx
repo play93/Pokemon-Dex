@@ -1,6 +1,8 @@
 //선택된 포켓몬을 보여주는 컴포넌트입니다.
 import React from "react";
 import styled from "styled-components";
+import PokemonCard from "./PokemonCard";
+import { useNavigate } from "react-router-dom";
 
 const DashboardContainer = styled.div`
   max-width: 1000px;
@@ -12,21 +14,39 @@ const Title = styled.h1`
   text-align: center;
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 40px;
+`;
+const NoPokemonText = styled.p`
+  text-align: center;
+`;
+const SelectPokemonBox = styled.ul`
+  display: grid;
+  margin: auto;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 `;
 
-function Dashboard({ selectedPokemon }) {
+function Dashboard({ onAddPokemon, onRemovePokemon, selectedPokemon }) {
+  const navigate = useNavigate();
   return (
     <DashboardContainer>
       <Title>나만의 포켓몬</Title>
       <div>
         {selectedPokemon.length === 0 ? (
-          <p>선택된 포켓몬이 없습니다.</p>
+          <NoPokemonText>선택된 포켓몬이 없습니다.</NoPokemonText>
         ) : (
-          <ul>
+          <SelectPokemonBox>
             {selectedPokemon.map((pokemon) => (
-              <li key={pokemon.id}>{pokemon.korean_name}</li>
+              <PokemonCard
+                key={pokemon.id}
+                pokemon={pokemon}
+                onAdd={onAddPokemon}
+                onRemove={onRemovePokemon}
+                isSelected={true} // 현재 포켓몬이 선택된 상태인지 확인하여 전달
+                navigate={navigate} // 포켓몬 상세페이지로 이동하기 위해 navigate 함수 전달
+              />
             ))}
-          </ul>
+          </SelectPokemonBox>
         )}
       </div>
     </DashboardContainer>
