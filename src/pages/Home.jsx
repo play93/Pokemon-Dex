@@ -19,7 +19,16 @@ const Title = styled.h1`
 const StartBtn = styled.button`
   cursor: pointer;
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 8px 16px;
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  &:hover {
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.8);
+    background-color: red;
+    color: white;
+  }
 `;
 
 function Home() {

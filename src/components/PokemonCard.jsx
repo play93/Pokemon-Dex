@@ -10,7 +10,13 @@ const Card = styled.li`
   text-align: center;
   border-radius: 10px;
   padding: 15px;
+  transition: 0.3s;
   cursor: pointer;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+      rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    scale: calc(1.03);
+  }
 `;
 
 const PokemonNum = styled.p`
