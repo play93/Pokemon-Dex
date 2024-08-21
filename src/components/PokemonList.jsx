@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import MOCK_DATA from "../mock";
 
 const ListContainer = styled.ul`
   max-width: 1000px;
@@ -27,15 +26,13 @@ function PokemonList({
   return (
     <ListContainer>
       {pokemonList.map((pokemon) => {
-        const isSelected = selectedPokemon.some((p) => p.id === pokemon.id);
-
         return (
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
             onAdd={onAddPokemon}
             onRemove={onRemovePokemon}
-            isSelected={isSelected} // 현재 포켓몬이 선택된 상태인지 확인하여 전달
+            isSelected={false} // isSelected={isSelected}로 설정하면 alert창이 뜨지 않지만 리스트에서도 버튼 색만 보고 이미 추가를 했는지 추가를 안했는지 알 수 있음
             navigate={navigate} // 포켓몬 상세페이지로 이동하기 위해 navigate 함수 전달
           />
         );

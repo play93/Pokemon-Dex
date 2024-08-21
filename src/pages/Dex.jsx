@@ -1,5 +1,4 @@
 import Dashboard from "../components/Dashboard";
-import PokemonCard from "../components/PokemonCard";
 import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 import { useState } from "react";
@@ -12,20 +11,17 @@ function Dex() {
   //const [onRemove, setOnRemove] = useState();
 
   const addPokemon = (pokemon) => {
-    {
-      /* 포켓몬을 선택하는 로직을 완성해봅시다 */
-      //선택한 카드의 갯수가 6개가 넘었는지 확인해서 넘었으면 막고, 아니면 return
-      if (selectedPokemon.length >= 6) {
-        return alert("최대6개만 추가할 수 있음");
-      }
-
-      //이미 추가했는지 확인해야함
-      if (selectedPokemon.some((p) => p.id === pokemon.id)) {
-        return;
-      } else {
-        setSelectedPokemon([...selectedPokemon, pokemon]);
-      }
+    /* 포켓몬을 선택하는 로직을 완성해봅시다 */
+    //선택한 카드의 갯수가 6개가 넘었는지 확인해서 넘었으면 막고, 아니면 return
+    if (selectedPokemon.length >= 6) {
+      return alert("최대6개만 추가할 수 있음");
     }
+
+    //이미 추가했는지 확인하고 있으면 alert로 경고
+    if (selectedPokemon.some((p) => p.id === pokemon.id)) {
+      return alert("이미 추가된 포켓몬");
+    }
+    setSelectedPokemon([...selectedPokemon, pokemon]);
   };
 
   const removePokemon = (pokemon) => {

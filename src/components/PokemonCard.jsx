@@ -1,8 +1,5 @@
 import React from "react";
-import MOCK_DATA from "../mock";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import pokemonDetail from "../pages/pokemonDetail";
 
 //개별 포켓몬의 정보를 카드 형식으로 보여주는 컴포넌트입니다.
 const Card = styled.li`
