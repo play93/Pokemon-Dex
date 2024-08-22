@@ -1,4 +1,3 @@
-//디테일 페이지입니다.
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";

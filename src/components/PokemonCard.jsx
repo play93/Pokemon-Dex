@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { AddPokemon } from "../context/AddPokemonContext";
 
-//개별 포켓몬의 정보를 카드 형식으로 보여주는 컴포넌트입니다.
 const Card = styled.li`
   background: #fff;
   text-align: center;

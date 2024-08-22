@@ -1,4 +1,3 @@
-//선택된 포켓몬을 보여주는 컴포넌트입니다.
 import React from "react";
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
@@ -41,8 +40,8 @@ function Dashboard({ onAddPokemon, onRemovePokemon, selectedPokemon }) {
                 key={pokemon.id}
                 pokemon={pokemon}
                 onRemove={onRemovePokemon}
-                isSelected={true} // 현재 포켓몬이 선택된 상태인지 확인하여 전달
-                navigate={navigate} // 포켓몬 상세페이지로 이동하기 위해 navigate 함수 전달
+                isSelected={true}
+                navigate={navigate}
               />
             ))}
           </SelectPokemonBox>
