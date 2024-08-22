@@ -36,7 +36,7 @@ const Button = styled.button`
   }
 `;
 
-const PokemonCard = ({ pokemon, isSelected, navigate }) => {
+const PokemonCard = ({ pokemon, isSelected, navigate, onRemove }) => {
   const addPokemon = useContext(AddPokemon);
   return (
     <Card onClick={() => navigate("/pokemonDetail?id=" + pokemon.id)}>
@@ -48,7 +48,7 @@ const PokemonCard = ({ pokemon, isSelected, navigate }) => {
           $isAdd={false}
           onClick={(e) => {
             e.stopPropagation();
-            addPokemon(pokemon);
+            onRemove(pokemon);
           }}
         >
           삭제
