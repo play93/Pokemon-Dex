@@ -2,6 +2,7 @@ import Dashboard from "../components/Dashboard";
 import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 import { useState } from "react";
+import { AddPokemon } from "../context/AddPokemonContext";
 
 function Dex() {
   //선택된 포켓몬 관리
@@ -36,18 +37,17 @@ function Dex() {
   };
 
   return (
-    <>
+    <AddPokemon.Provider value={addPokemon}>
       <Dashboard
         selectedPokemon={selectedPokemon}
         onRemovePokemon={removePokemon}
       />
       <PokemonList
         pokemonList={MOCK_DATA}
-        onAddPokemon={addPokemon}
         onRemovePokemon={removePokemon}
         selectedPokemon={selectedPokemon}
       />
-    </>
+    </AddPokemon.Provider>
   );
 }
 

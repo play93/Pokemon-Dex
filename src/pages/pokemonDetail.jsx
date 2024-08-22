@@ -42,7 +42,7 @@ function pokemonDetail() {
     <PokemonInfoBox>
       <img src={pokemon.img_url} alt={pokemon.korean_name} />
       <h3>{pokemon.korean_name}</h3>
-      <p>타입: {pokemon.types}</p>
+      <p>타입: {pokemon.types.join(", ")}</p>
       <p>{pokemon.description}</p>
       <GoBackButton onClick={() => navigate("/dex")}>뒤로가기</GoBackButton>
     </PokemonInfoBox>

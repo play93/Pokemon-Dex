@@ -15,12 +15,7 @@ const ListContainer = styled.ul`
   border-radius: 10px;
 `;
 
-function PokemonList({
-  pokemonList,
-  onAddPokemon,
-  onRemovePokemon,
-  selectedPokemon,
-}) {
+function PokemonList({ pokemonList, onRemovePokemon }) {
   const navigate = useNavigate();
 
   return (
@@ -30,7 +25,6 @@ function PokemonList({
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onAdd={onAddPokemon}
             onRemove={onRemovePokemon}
             isSelected={false} // isSelected={isSelected}로 설정하면 alert창이 뜨지 않지만 리스트에서도 버튼 색만 보고 이미 추가를 했는지 추가를 안했는지 알 수 있음
             navigate={navigate} // 포켓몬 상세페이지로 이동하기 위해 navigate 함수 전달
