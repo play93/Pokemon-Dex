@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { PokemonContext } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/PokemonContext";
 
 const Card = styled.li`
   background: #fff;

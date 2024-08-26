@@ -2,7 +2,7 @@ import Dashboard from "../components/Dashboard";
 import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 import { useState } from "react";
-import { PokemonContext } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/PokemonContext";
 import { useNavigate } from "react-router-dom";
 
 function Dex() {

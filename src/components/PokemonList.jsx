@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { PokemonContext } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/PokemonContext";
 
 const ListContainer = styled.ul`
   max-width: 1000px;

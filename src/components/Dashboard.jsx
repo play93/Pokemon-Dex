@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
 import { useContext } from "react";
-import { PokemonContext } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/PokemonContext";
 
 const DashboardContainer = styled.div`
   max-width: 1000px;
