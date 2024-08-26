@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
 import { useNavigate } from "react-router-dom";
@@ -34,14 +33,21 @@ const EmptyBox = styled.li`
   background-repeat: no-repeat;
   margin: auto;
 `;
-function Dashboard({ onAddPokemon, onRemovePokemon, selectedPokemon }) {
+function Dashboard({ onRemovePokemon, selectedPokemon }) {
   const navigate = useNavigate();
+
+  const selectedPokemonWithSixLength = [
+    ...selectedPokemon,
+    ...Array(6).fill(null),
+  ].slice(0, 6);
+  console.log(selectedPokemonWithSixLength);
+
   return (
     <DashboardContainer>
       <Title>나만의 포켓몬</Title>
+      {/*SelectPockmonBox에는 6개의 비어있는 li <EmptyBox>가 있는데 selectedPokemon이 생기면 <EmptyBox>를 <PokemonCard>로 변경*/}
       <SelectPokemonBox>
-        <EmptyBox></EmptyBox>
-        {selectedPokemon.map((pokemon) => {
+        {selectedPokemonWithSixLength.map((pokemon) => {
           return pokemon ? (
             <PokemonCard
               key={pokemon.id}
@@ -51,7 +57,7 @@ function Dashboard({ onAddPokemon, onRemovePokemon, selectedPokemon }) {
               navigate={navigate}
             />
           ) : (
-            <EmptyBox></EmptyBox>
+            <EmptyBox />
           );
         })}
       </SelectPokemonBox>

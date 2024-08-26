@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
