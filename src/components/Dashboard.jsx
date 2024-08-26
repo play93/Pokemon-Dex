@@ -51,13 +51,13 @@ function Dashboard() {
         {selectedPokemonWithSixLength.map((pokemon) => {
           return pokemon ? (
             <PokemonCard
-              key={pokemon.id}
+              key={pokemon.id || crypto.randomUUID()}
               pokemon={pokemon}
               isSelected={true}
               navigate={navigate}
             />
           ) : (
-            <EmptyBox />
+            <EmptyBox key={crypto.randomUUID()} />
           );
         })}
       </SelectPokemonBox>
