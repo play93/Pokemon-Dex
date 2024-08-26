@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
+import { PokemonContext } from "../context/AddPokemonContext";
 
 const ListContainer = styled.ul`
   max-width: 1000px;
@@ -13,8 +14,8 @@ const ListContainer = styled.ul`
   border-radius: 10px;
 `;
 
-function PokemonList({ pokemonList, onRemovePokemon }) {
-  const navigate = useNavigate();
+function PokemonList() {
+  const { pokemonList, navigate } = useContext(PokemonContext);
 
   return (
     <ListContainer>
@@ -23,7 +24,6 @@ function PokemonList({ pokemonList, onRemovePokemon }) {
           <PokemonCard
             key={pokemon.id}
             pokemon={pokemon}
-            onRemove={onRemovePokemon}
             isSelected={false} // isSelected={isSelected}로 설정하면 alert창이 뜨지 않지만 리스트에서도 버튼 색만 보고 이미 추가를 했는지 추가를 안했는지 알 수 있음
             navigate={navigate}
           />

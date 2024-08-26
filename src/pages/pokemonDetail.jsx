@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MOCK_DATA from "../mock";
@@ -27,7 +26,7 @@ const GoBackButton = styled.button`
   }
 `;
 
-function pokemonDetail() {
+function PokemonDetail() {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
@@ -48,4 +47,4 @@ function pokemonDetail() {
   );
 }
 
-export default pokemonDetail;
+export default PokemonDetail;

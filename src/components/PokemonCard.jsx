@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { AddPokemon } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/AddPokemonContext";
 
 const Card = styled.li`
   background: #fff;
@@ -36,8 +36,9 @@ const Button = styled.button`
   }
 `;
 
-const PokemonCard = ({ pokemon, isSelected, navigate, onRemove }) => {
-  const addPokemon = useContext(AddPokemon);
+const PokemonCard = ({ pokemon, isSelected }) => {
+  const { addPokemon, removePokemon, navigate } = useContext(PokemonContext);
+
   return (
     <Card onClick={() => navigate("/pokemonDetail?id=" + pokemon.id)}>
       <img src={pokemon.img_url} alt={pokemon.korean_name} />
@@ -48,7 +49,7 @@ const PokemonCard = ({ pokemon, isSelected, navigate, onRemove }) => {
           $isAdd={false}
           onClick={(e) => {
             e.stopPropagation();
-            onRemove(pokemon);
+            removePokemon(pokemon);
           }}
         >
           삭제

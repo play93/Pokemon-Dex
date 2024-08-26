@@ -2,7 +2,8 @@ import Dashboard from "../components/Dashboard";
 import PokemonList from "../components/PokemonList";
 import MOCK_DATA from "../mock";
 import { useState } from "react";
-import { AddPokemon } from "../context/AddPokemonContext";
+import { PokemonContext } from "../context/AddPokemonContext";
+import { useNavigate } from "react-router-dom";
 
 function Dex() {
   //선택된 포켓몬 관리
@@ -31,18 +32,30 @@ function Dex() {
     }
   };
 
+  const pokemonList = MOCK_DATA;
+
+  const navigate = useNavigate();
+
   return (
-    <AddPokemon.Provider value={addPokemon}>
+    <PokemonContext.Provider
+      value={{
+        addPokemon,
+        removePokemon,
+        selectedPokemon,
+        pokemonList,
+        navigate,
+      }}
+    >
       <Dashboard
-        selectedPokemon={selectedPokemon}
-        onRemovePokemon={removePokemon}
+      // selectedPokemon={selectedPokemon}
+      // onRemovePokemon={removePokemon}
       />
       <PokemonList
-        pokemonList={MOCK_DATA}
-        onRemovePokemon={removePokemon}
-        selectedPokemon={selectedPokemon}
+      //pokemonList={MOCK_DATA}
+      // onRemovePokemon={removePokemon}
+      // selectedPokemon={selectedPokemon}
       />
-    </AddPokemon.Provider>
+    </PokemonContext.Provider>
   );
 }
 

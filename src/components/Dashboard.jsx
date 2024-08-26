@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { PokemonContext } from "../context/AddPokemonContext";
 
 const DashboardContainer = styled.div`
   max-width: 1000px;
@@ -33,8 +34,8 @@ const EmptyBox = styled.li`
   background-repeat: no-repeat;
   margin: auto;
 `;
-function Dashboard({ onRemovePokemon, selectedPokemon }) {
-  const navigate = useNavigate();
+function Dashboard() {
+  const { selectedPokemon, navigate } = useContext(PokemonContext);
 
   const selectedPokemonWithSixLength = [
     ...selectedPokemon,
@@ -52,7 +53,6 @@ function Dashboard({ onRemovePokemon, selectedPokemon }) {
             <PokemonCard
               key={pokemon.id}
               pokemon={pokemon}
-              onRemove={onRemovePokemon}
               isSelected={true}
               navigate={navigate}
             />
