@@ -1,12 +1,9 @@
-//import { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-//import { PokemonContext } from "../context/PokemonContext";
 import MOCK_DATA from "../mock";
 import { useNavigate } from "react-router-dom";
 
 function PokemonList() {
-  //const { pokemonList, navigate } = useContext(PokemonContext);
   const pokemonList = MOCK_DATA;
   const navigate = useNavigate();
   return (

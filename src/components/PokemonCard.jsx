@@ -1,7 +1,4 @@
-//import { useContext } from "react";
 import styled from "styled-components";
-//import { PokemonContext } from "../context/PokemonContext";
-//import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast, Bounce } from "react-toastify";
@@ -9,10 +6,8 @@ import { addPokemon, removePokemon } from "../features/pokemonSlice";
 import { useSelector } from "react-redux";
 
 const PokemonCard = ({ pokemon, isSelected }) => {
-  //const { addPokemon, removePokemon, navigate } = useContext(PokemonContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const [selectedPokemon, setSelectedPokemon] = useState([]);
   const selectedPokemon = useSelector((state) => state.pokemon);
 
   //포켓몬 추가
@@ -49,7 +44,6 @@ const PokemonCard = ({ pokemon, isSelected }) => {
       dispatch(removePokemon(pokemon.id));
     }
   };
-  //console.log(selectedPokemon);
 
   return (
     <Card onClick={() => navigate("/pokemonDetail?id=" + pokemon.id)}>
