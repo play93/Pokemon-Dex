@@ -1,6 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <HomeContainer>
+      <Title>포켓몬 도감</Title>
+      <StartBtn onClick={() => navigate("/dex")}>시작하기</StartBtn>
+    </HomeContainer>
+  );
+}
+
+export default Home;
+
 const HomeContainer = styled.div`
   width: 100%;
   height: 100vh;
@@ -29,16 +42,3 @@ const StartBtn = styled.button`
     color: white;
   }
 `;
-
-function Home() {
-  const navigate = useNavigate();
-
-  return (
-    <HomeContainer>
-      <Title>포켓몬 도감</Title>
-      <StartBtn onClick={() => navigate("/dex")}>시작하기</StartBtn>
-    </HomeContainer>
-  );
-}
-
-export default Home;

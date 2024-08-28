@@ -2,6 +2,29 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MOCK_DATA from "../mock";
 
+function PokemonDetail() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = new URLSearchParams(location.search);
+  console.log(params); //params 확인
+  const pokemonId = Number(params.get("id"));
+  console.log(pokemonId); //params에서 가져온 id확인
+  const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
+  console.log(pokemon);
+
+  return (
+    <PokemonInfoBox>
+      <img src={pokemon.img_url} alt={pokemon.korean_name} />
+      <h3>{pokemon.korean_name}</h3>
+      <p>타입: {pokemon.types.join(", ")}</p>
+      <p>{pokemon.description}</p>
+      <GoBackButton onClick={() => navigate("/dex")}>뒤로가기</GoBackButton>
+    </PokemonInfoBox>
+  );
+}
+
+export default PokemonDetail;
+
 const PokemonInfoBox = styled.div`
   width: 100%;
   height: 100vh;
@@ -25,26 +48,3 @@ const GoBackButton = styled.button`
     color: white;
   }
 `;
-
-function PokemonDetail() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const params = new URLSearchParams(location.search);
-  console.log(params); //params 확인
-  const pokemonId = Number(params.get("id"));
-  console.log(pokemonId); //params에서 가져온 id확인
-  const pokemon = MOCK_DATA.find((p) => p.id === pokemonId);
-  console.log(pokemon);
-
-  return (
-    <PokemonInfoBox>
-      <img src={pokemon.img_url} alt={pokemon.korean_name} />
-      <h3>{pokemon.korean_name}</h3>
-      <p>타입: {pokemon.types.join(", ")}</p>
-      <p>{pokemon.description}</p>
-      <GoBackButton onClick={() => navigate("/dex")}>뒤로가기</GoBackButton>
-    </PokemonInfoBox>
-  );
-}
-
-export default PokemonDetail;

@@ -1,22 +1,14 @@
-import { useContext } from "react";
+//import { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { PokemonContext } from "../context/PokemonContext";
-
-const ListContainer = styled.ul`
-  max-width: 1000px;
-  display: grid;
-  padding: 20px;
-  margin: auto;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  background-color: #ebebeb;
-  border-radius: 10px;
-`;
+//import { PokemonContext } from "../context/PokemonContext";
+import MOCK_DATA from "../mock";
+import { useNavigate } from "react-router-dom";
 
 function PokemonList() {
-  const { pokemonList, navigate } = useContext(PokemonContext);
-
+  //const { pokemonList, navigate } = useContext(PokemonContext);
+  const pokemonList = MOCK_DATA;
+  const navigate = useNavigate();
   return (
     <ListContainer>
       {pokemonList.map((pokemon) => {
@@ -34,3 +26,14 @@ function PokemonList() {
 }
 
 export default PokemonList;
+
+const ListContainer = styled.ul`
+  max-width: 1000px;
+  display: grid;
+  padding: 20px;
+  margin: auto;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  background-color: #ebebeb;
+  border-radius: 10px;
+`;

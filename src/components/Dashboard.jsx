@@ -1,7 +1,44 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
-import { useContext } from "react";
-import { PokemonContext } from "../context/PokemonContext";
+// import { useContext } from "react";
+// import { PokemonContext } from "../context/PokemonContext";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+function Dashboard() {
+  const navigate = useNavigate();
+  //const { selectedPokemon, navigate } = useContext(PokemonContext);
+  const selectedPokemon = useSelector((state) => state.pokemon);
+
+  const selectedPokemonWithSixLength = [
+    ...selectedPokemon,
+    ...Array(6).fill(null),
+  ].slice(0, 6);
+  console.log(selectedPokemonWithSixLength);
+
+  return (
+    <DashboardContainer>
+      <Title>나만의 포켓몬</Title>
+      {/*SelectPockmonBox에는 6개의 비어있는 li <EmptyBox>가 있는데 selectedPokemon이 생기면 <EmptyBox>를 <PokemonCard>로 변경*/}
+      <SelectPokemonBox>
+        {selectedPokemonWithSixLength.map((pokemon) => {
+          return pokemon ? (
+            <PokemonCard
+              key={pokemon.id || crypto.randomUUID()}
+              pokemon={pokemon}
+              isSelected={true}
+              navigate={navigate}
+            />
+          ) : (
+            <EmptyBox key={crypto.randomUUID()} />
+          );
+        })}
+      </SelectPokemonBox>
+    </DashboardContainer>
+  );
+}
+
+export default Dashboard;
 
 const DashboardContainer = styled.div`
   max-width: 1000px;
@@ -34,35 +71,3 @@ const EmptyBox = styled.li`
   background-repeat: no-repeat;
   margin: auto;
 `;
-function Dashboard() {
-  const { selectedPokemon, navigate } = useContext(PokemonContext);
-
-  const selectedPokemonWithSixLength = [
-    ...selectedPokemon,
-    ...Array(6).fill(null),
-  ].slice(0, 6);
-  console.log(selectedPokemonWithSixLength);
-
-  return (
-    <DashboardContainer>
-      <Title>나만의 포켓몬</Title>
-      {/*SelectPockmonBox에는 6개의 비어있는 li <EmptyBox>가 있는데 selectedPokemon이 생기면 <EmptyBox>를 <PokemonCard>로 변경*/}
-      <SelectPokemonBox>
-        {selectedPokemonWithSixLength.map((pokemon) => {
-          return pokemon ? (
-            <PokemonCard
-              key={pokemon.id || crypto.randomUUID()}
-              pokemon={pokemon}
-              isSelected={true}
-              navigate={navigate}
-            />
-          ) : (
-            <EmptyBox key={crypto.randomUUID()} />
-          );
-        })}
-      </SelectPokemonBox>
-    </DashboardContainer>
-  );
-}
-
-export default Dashboard;
